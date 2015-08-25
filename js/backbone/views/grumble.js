@@ -14,14 +14,19 @@ App.Views.Grumble = Backbone.View.extend({
 
     this.template = Handlebars.compile($("#grumbleTemplate").html());
     this.editTemplate = Handlebars.compile($("#grumbleFormTemplate").html())
-
+    App.Views.grumbleViews.push(this);
     this.render();
+    console.dir(this.model.id);
+
   },
+
+  
 
   render: function() {
     event.preventDefault();
     var self = this
     this.$el.html(this.template(this.model.toJSON()));
+
   },
 
   renderEditForm: function(){

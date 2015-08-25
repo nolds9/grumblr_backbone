@@ -1,14 +1,26 @@
-App.Router.Grumbles = Backbone.Router.extend({
+App.Routers.Grumbles = Backbone.Router.extend({
   routes: {
     '': 'index',
     'grumbles/new': 'newGrumble',
     'grumbles/:id/edit': 'editGrumble'
   },
   initialize: function() {
-    console.log('New Router!');
-    App.Collections.grumbles = new App.GrumbleCollection();
-    App.Views.grumbleListView = new App.GrumbleListView({collection: App.Collections.grumbles});
-    App.Views.grumbleFormView = new App.GrumbleFormView({collection: App.Collections.grumbles});
+    App.Collections.grumbles = new App.Collections.Grumbles();
+    App.Views.listView = new App.Views.GrumbleList({collection: App.Collections.grumbles});
+    App.Views.grumbleCreateView = new App.Views.GrumbleCreate({collection: App.Collections.grumbles});
+  },
+
+  index: function(){
+    App.Collections.grumbles.fetch()
+  },
+  newGrumble: function(){
+    App.Views.grumbleCreateView.toggleForm();
+  },
+  editGrumble: function(id){
+    App.Collections.grumbles.fetch().then(function() {
+      view = App.Views.listView.find(id);
+      view.renderEditForm();
+    });
   }
 
 })
