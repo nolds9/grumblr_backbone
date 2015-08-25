@@ -5,7 +5,8 @@ GrumbleView = Backbone.View.extend({
   events: {
     'click .edit': 'renderEditForm',
     'click .cancel': 'render',
-    'click .submit': 'updateGrumble'
+    'click .submit': 'updateGrumble',
+    'click .delete': 'deleteGrumble'
   },
 
   initialize: function() {
@@ -29,5 +30,19 @@ GrumbleView = Backbone.View.extend({
 
   updateGrumble: function() {
     event.preventDefault();
+    var data = {
+      title: this.$("[name='title']").val(),
+      authorName: this.$("[name='authorName']").val(),
+      content: this.$("[name='content']").val(),
+      photoUrl: this.$("[name='photoUrl']").val()
+    }
+    this.model.save(data)
+  },
+
+  deleteGrumble: function(){
+    var self = this;
+
+    self.model.destroy();
+    self.$el.fadeOut(function() { self.$el.remove(); });
   }
 });

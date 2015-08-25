@@ -22,9 +22,16 @@ GrumbleCreateView = Backbone.View.extend({
   createGrumble: function(){
     event.preventDefault();
     var data = {
-      title: this.$("[name='title']").val()
+      title: this.$("[name='title']").val(),
+      authorName: this.$("[name='authorName']").val(),
+      content: this.$("[name='content']").val(),
+      photoUrl: this.$("[name='photoUrl']").val()
     }
-    this.model.save(data)
-  }
+    this.collection.create(data);
+
+    this.$el.find("input, textarea").val("");
+    this.toggleForm();
+  },
+
 
 });

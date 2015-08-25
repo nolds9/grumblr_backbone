@@ -13,6 +13,6 @@ GrumbleListView = Backbone.View.extend({
 
   renderOne: function(grumble) {
     var view = new GrumbleView({ model: grumble });
-    this.$el.append(view.$el);
+    this.$el.prepend(view.$el);
   }
 });
