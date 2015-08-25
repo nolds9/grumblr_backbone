@@ -20,9 +20,10 @@ App.Views.Grumble = Backbone.View.extend({
 
   },
 
-  
+
 
   render: function() {
+    App.Routers.grumblesRouter.navigate('')
     event.preventDefault();
     var self = this
     this.$el.html(this.template(this.model.toJSON()));
@@ -30,6 +31,7 @@ App.Views.Grumble = Backbone.View.extend({
   },
 
   renderEditForm: function(){
+    App.Routers.grumblesRouter.navigate('grumbles/' + this.model.id + '/edit')
     this.$el.html(this.editTemplate(this.model.toJSON()))
   },
 

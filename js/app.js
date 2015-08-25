@@ -8,6 +8,6 @@ App = {
 }
 
 $(document).ready(function() {
-  grumblesRouter = new App.Routers.Grumbles();
+  App.Routers.grumblesRouter = new App.Routers.Grumbles();
   Backbone.history.start();
 });
