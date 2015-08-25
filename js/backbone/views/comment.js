@@ -2,9 +2,6 @@ App.Views.Comment = Backbone.View.extend({
   className: 'comment',
   tagName: 'div',
 
-  events: {
-  },
-
   initialize: function() {
     this.listenTo(this.model, 'change', this.render);
 
