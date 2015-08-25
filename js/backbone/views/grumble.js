@@ -13,19 +13,26 @@ App.Views.Grumble = Backbone.View.extend({
     this.listenTo(this.model, 'change', this.render);
 
     this.template = Handlebars.compile($("#grumbleTemplate").html());
-    this.editTemplate = Handlebars.compile($("#grumbleFormTemplate").html())
+    this.editTemplate = Handlebars.compile($("#grumbleFormTemplate").html());
 
     this.render();
   },
 
   render: function() {
     event.preventDefault();
-    var self = this
+    var self = this;
     this.$el.html(this.template(this.model.toJSON()));
+
+    this.model.comments.fetch().then(function() {
+      self.model.comments.models.forEach(function(comment) {
+        var commentView = new App.Views.Comment({model: comment});
+        self.$el.find(".comments").append(commentView.$el);
+      });
+    });
   },
 
   renderEditForm: function(){
-    this.$el.html(this.editTemplate(this.model.toJSON()))
+    this.$el.html(this.editTemplate(this.model.toJSON()));
   },
 
   updateGrumble: function() {
