@@ -10,12 +10,13 @@
   <script src="js/backbone/views/grumbleList.js"></script>
   <script src="js/backbone/views/grumbleCreate.js"></script>
   <script src="js/app.js"></script>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <h1>Grumblr</h1>
 
-  <div id="newGrumble">
-    <button class="toggle-form">New Grumble</button>
+  <div id="createGrumble">
+    <button class="new">New Grumble</button>
     <div class="formContainer"></div>
   </div>
 
@@ -30,7 +31,7 @@
         {{ content }}
       </p>
       <img src="{{ photoUrl }}" alt="">
-      <button class="editButton">Edit Grumble</button>
+      <button class="edit">Update Grumble</button>
     </div>
   </script>
 
@@ -41,7 +42,8 @@
       <textarea name="content" value="{{ content }}"></textarea>
       <img src="{{ photoUrl }}" alt="">
       <input type="text" name="photoUrl" value="{{ photoUrl }}">
-      <button class="create">Create</button>
+      <button class="submit">Submit</button>
+      <button class="cancel">Cancel</button>
     </form>
   </script>
 </body>
