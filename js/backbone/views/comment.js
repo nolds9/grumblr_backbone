@@ -2,6 +2,10 @@ App.Views.Comment = Backbone.View.extend({
   className: 'comment',
   tagName: 'div',
 
+  events: {
+    "click .deleteComment": "deleteComment"
+  },
+
   initialize: function() {
     this.listenTo(this.model, 'change', this.render);
 
@@ -12,4 +16,9 @@ App.Views.Comment = Backbone.View.extend({
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
   },
+
+  deleteComment: function(){
+    this.model.destroy();
+    this.$el.fadeOut();
+  }
 });

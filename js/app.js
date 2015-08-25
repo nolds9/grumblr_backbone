@@ -3,12 +3,13 @@ App = {
   Views: {},
   Collections: {},
   Routers: {}
-}
+};
 
 $(document).ready(function() {
   var grumbles = new App.Collections.Grumbles();
   grumbles.fetch({reset: true});
 
+  // for debugging in the console
   App.Collections.grumbles = grumbles;
 
   var listView = new App.Views.GrumbleList({collection: grumbles});
