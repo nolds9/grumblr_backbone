@@ -6,28 +6,25 @@ App.Views.Grumble = Backbone.View.extend({
     'click .edit': 'renderEditForm',
     'click .cancel': 'render',
     'click .submit': 'updateGrumble',
-    'click .delete': 'deleteGrumble'
+    'click .delete': 'deleteGrumble',
+    'click .commentForm button': 'createComment'
   },
 
   initialize: function() {
     this.listenTo(this.model, 'change', this.render);
+    this.listenTo(this.model.comments, 'add', this.renderComment);
 
     this.template = Handlebars.compile($("#grumbleTemplate").html());
     this.editTemplate = Handlebars.compile($("#grumbleFormTemplate").html())
-    App.Views.grumbleViews.push(this);
+
     this.render();
-    console.dir(this.model.id);
-
   },
-
-
 
   render: function() {
     App.Routers.grumblesRouter.navigate('')
     event.preventDefault();
-    var self = this
+    this.model.comments.fetch();
     this.$el.html(this.template(this.model.toJSON()));
-
   },
 
   renderEditForm: function(){
@@ -43,13 +40,25 @@ App.Views.Grumble = Backbone.View.extend({
       content: this.$("[name='content']").val(),
       photoUrl: this.$("[name='photoUrl']").val()
     }
-    this.model.save(data)
+    this.model.save(data);
   },
 
   deleteGrumble: function(){
-    var self = this;
+    this.model.destroy();
+    this.$el.fadeOut();
+  },
 
-    self.model.destroy();
-    self.$el.fadeOut(function() { self.$el.remove(); });
+  renderComment: function(comment) {
+    var commentView = new App.Views.Comment({model: comment});
+    this.$el.find(".comments").append(commentView.$el);
+  },
+
+  createComment: function(){
+    event.preventDefault();
+    var data = {
+      authorName: this.$("[name='authorName']").val(),
+      content: this.$("[name='content']").val()
+    }
+    this.model.comments.create(data);
   }
 });

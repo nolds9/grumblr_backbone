@@ -14,3 +14,13 @@ textarea {
   display: block;
   width: 40rem;
 }
+
+.comments {
+
+}
+
+.comment {
+  border: 1px solid black;
+  padding: 1em;
+  margin: 1em;
+}

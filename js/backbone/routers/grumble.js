@@ -14,6 +14,7 @@ App.Routers.Grumbles = Backbone.Router.extend({
     App.Collections.grumbles.fetch()
   },
   newGrumble: function(){
+    App.Collections.grumbles.fetch()
     App.Views.grumbleCreateView.toggleForm();
   },
   editGrumble: function(id){

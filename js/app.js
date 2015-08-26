@@ -5,7 +5,7 @@ App = {
   },
   Collections: {},
   Routers: {}
-}
+};
 
 $(document).ready(function() {
   App.Routers.grumblesRouter = new App.Routers.Grumbles();
