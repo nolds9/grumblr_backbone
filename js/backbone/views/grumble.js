@@ -18,7 +18,6 @@ App.Views.Grumble = Backbone.View.extend({
   },
 
   render: function() {
-    event.preventDefault();
     this.$el.html(this.template(this.model.toJSON()));
   },
 
