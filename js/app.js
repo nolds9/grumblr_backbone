@@ -1,13 +1,17 @@
 App = {
   Models: {},
-  Views: {
-    grumbleViews: []
-  },
+  Views: {},
   Collections: {},
   Routers: {}
 };
 
 $(document).ready(function() {
-  App.Routers.grumblesRouter = new App.Routers.Grumbles();
-  Backbone.history.start();
+  grumbles = new App.Collections.Grumbles();
+
+  grumbles.fetch().then(function(newGrumbles) {
+    grumbles.models.forEach(function(grumble) {
+      var grumbleView = new App.Views.Grumble({model: grumble});
+      $('#grumbles').append(grumbleView.$el);
+    });
+  });
 });
