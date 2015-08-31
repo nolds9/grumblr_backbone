@@ -10,11 +10,11 @@ we'd like you to set up both models and collections for comments on a grumble.
 1. Define a model for a comment using `Backbone.Model.extend`
   - You know it worked if:
     - You can create a new comment in the console using
-    - `var comment = new Comment({authorName: "bob", content: "learned backbone today!!"})`
+    - `var comment = new App.Models.Comment({authorName: "bob", content: "learned backbone today!!"})`
 2. Define a comments collection using `Backbone.Collection.extend`
   - You know it worked if:
     - You can instantiate a comments collection 
-    - `var comments = new Comments([comment1, comment2, comment3])`
+    - `var comments = new App.Collections.Comments([comment1, comment2, comment3])`
 3. Associate comments with models
 
 Associations in backbone are a little tricky, but we can associate
@@ -22,7 +22,7 @@ two collections by modifying the Grumble model using `this` and an `initialize` 
 
 ```js
 // js/models/grumble.js
-Grumble = Backbone.Model.extend({
+App.Models.Grumble = Backbone.Model.extend({
   urlRoot: "http://grumblr.wdidc.org/grumbles",
   initialize: function(){
     this.comments = new Comments();
