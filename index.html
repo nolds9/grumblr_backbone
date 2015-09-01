@@ -2,12 +2,12 @@
 <head>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/underscore/underscore-min.js"></script>
-  <script src="bower_components/handlebars/handlebars.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
   <script src="bower_components/backbone/backbone-min.js"></script>
   <script src="js/app.js"></script>
-  <script src="js/backbone/models/comment.js"></script>
+  <!-- <script src="js/backbone/models/comment.js"></script> -->
   <script src="js/backbone/models/grumble.js"></script>
-  <script src="js/backbone/collections/comments.js"></script>
+  <!-- <script src="js/backbone/collections/comments.js"></script> -->
   <script src="js/backbone/collections/grumbles.js"></script>
   <script src="js/backbone/views/grumble.js"></script>
   <link rel="stylesheet" href="css/style.css">
@@ -18,5 +18,26 @@
   <div id="grumbles">
   </div>
 
+  <script id="grumbleTemplate" type="text/x-handlebars-template">
+      <h1>{{title}}  <span class="delete">(X)</span></h1>
+      <h4>{{authorName}}</h4>
+      <div class="body">
+        <img src="{{photoUrl}}" alt="a bear" /><br>
+        {{content}}
+      </div>
+      <button class="edit">Update Grumble</button>
+  </script>
+
+  <script id="grumbleEditTemplate" type="text/x-handlebars-template">
+    <form class="grumbleForm">
+      <input type="text" name="title" value="{{title}}">
+      by: <input type="text" name="authorName" value="{{authorName}}">
+      <textarea name="content">{{content}}</textarea>
+      <img src="{{photoUrl}}" alt="">
+      <input type="text" name="photoUrl" value="{{photoUrl}}">
+      <button class="update">Update</button>
+      <button class="cancel">Cancel</button>
+    </form>
+  </script>
 </body>
 </html>
