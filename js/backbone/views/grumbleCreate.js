@@ -15,10 +15,10 @@ App.Views.GrumbleCreate = Backbone.View.extend({
     this.$(".formContainer").hide();
   },
 
-  toggleForm: function(){
+  toggleForm: function(event){
     this.toggleButton(this.$(".new").text());
     this.toggleUrlState(this.$(".new").text());
-    event.preventDefault();
+    if(event) event.preventDefault();
     this.$(".formContainer").slideToggle();
   },
 
@@ -38,8 +38,8 @@ App.Views.GrumbleCreate = Backbone.View.extend({
     }
   },
 
-  createGrumble: function(){
-    event.preventDefault();
+  createGrumble: function(event){
+    if(event) event.preventDefault();
     var data = {
       title: this.$("[name='title']").val(),
       authorName: this.$("[name='authorName']").val(),

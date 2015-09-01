@@ -20,20 +20,20 @@ App.Views.Grumble = Backbone.View.extend({
     this.render();
   },
 
-  render: function() {
+  render: function(event) {
     App.Routers.grumblesRouter.navigate('')
-    event.preventDefault();
+    if(event) event.preventDefault();
     this.model.comments.fetch();
     this.$el.html(this.template(this.model.toJSON()));
   },
 
-  renderEditForm: function(){
+  renderEditForm: function(event){
     App.Routers.grumblesRouter.navigate('grumbles/' + this.model.id + '/edit')
     this.$el.html(this.editTemplate(this.model.toJSON()))
   },
 
-  updateGrumble: function() {
-    event.preventDefault();
+  updateGrumble: function(event) {
+    if(event) event.preventDefault();
     var data = {
       title: this.$("[name='title']").val(),
       authorName: this.$("[name='authorName']").val(),
@@ -53,8 +53,8 @@ App.Views.Grumble = Backbone.View.extend({
     this.$el.find(".comments").append(commentView.$el);
   },
 
-  createComment: function(){
-    event.preventDefault();
+  createComment: function(event){
+    if(event) event.preventDefault();
     var data = {
       authorName: this.$("[name='authorName']").val(),
       content: this.$("[name='content']").val()
