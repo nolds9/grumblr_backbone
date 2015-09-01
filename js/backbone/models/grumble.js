@@ -1,5 +1,5 @@
 App.Models.Grumble = Backbone.Model.extend({
-  urlRoot: 'http://grumblr.wdidc.org/grumbles',
+  urlRoot: 'http://localhost:3000/grumbles',
 
   initialize: function () {
    this.comments = new App.Collections.Comments();
