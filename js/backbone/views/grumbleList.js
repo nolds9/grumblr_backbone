@@ -8,6 +8,7 @@ App.Views.GrumbleList = Backbone.View.extend({
   },
 
   renderAll: function(){
+    App.Routers.grumble.navigate('')
     this.$el.empty();
     this.collection.each(this.renderOne.bind(this));
   },

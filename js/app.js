@@ -3,13 +3,11 @@ App = {
   Views: {
     grumbleViews: []
   },
-  Collections: {}
+  Collections: {},
+  Routers: {}
 };
 
 $(document).ready(function() {
-  grumbles = new App.Collections.Grumbles();
-  grumbles.fetch({reset: true});
-
-  listView = new App.Views.GrumbleList({collection: grumbles});
-  grumbleCreateView = new App.Views.GrumbleCreate({collection: grumbles});
+  App.Routers.grumble = new App.Routers.Grumble();
+  Backbone.history.start();
 });
