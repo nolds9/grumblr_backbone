@@ -38,11 +38,12 @@ App.Views.Grumble = Backbone.View.extend({
       photoUrl: this.$("[name='photoUrl']").val()
     }
     this.model.save(data);
+    this.render();
   },
 
   deleteGrumble: function(){
     this.model.destroy();
     this.$el.fadeOut();
   }
-  
+
 });
