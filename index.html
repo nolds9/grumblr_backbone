@@ -15,35 +15,8 @@
 <body>
   <h1>Grumblr</h1>
 
-  <div id="createGrumble">
-    <button class="new">New Grumble</button>
-    <div class="formContainer"></div>
-  </div>
-
   <div id="grumbles">
   </div>
-
-  <script id="grumbleTemplate" type="text/x-handlebars-template">
-    <h2>{{ title }} <span class='delete'>(X)</span></h2>
-    by: {{ authorName }}
-    <p>
-      {{ content }}
-    </p>
-    <img src="{{ photoUrl }}" alt="">
-    <button class="edit">Update Grumble</button>
-  </script>
-
-  <script id="grumbleFormTemplate" type="text/x-handlebars-template">
-    <form class="grumbleForm">
-      <input type="text" name="title" value="{{ title }}">
-      by: <input type="text" name="authorName" value="{{ authorName }}">
-      <textarea name="content">{{ content }}</textarea>
-      <img src="{{ photoUrl }}" alt="">
-      <input type="text" name="photoUrl" value="{{ photoUrl }}">
-      <button class="submit">Submit</button>
-      <button class="cancel">Cancel</button>
-    </form>
-  </script>
 
 </body>
 </html>
