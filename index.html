@@ -9,9 +9,11 @@
   <script src="js/backbone/models/grumble.js"></script>
   <script src="js/backbone/collections/comments.js"></script>
   <script src="js/backbone/collections/grumbles.js"></script>
+  <script src="js/backbone/views/comment.js"></script>
   <script src="js/backbone/views/grumble.js"></script>
   <script src="js/backbone/views/grumbleList.js"></script>
   <script src="js/backbone/views/grumbleCreate.js"></script>
+
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -33,12 +35,13 @@
     </p>
     <img src="{{ photoUrl }}" alt="">
     <button class="edit">Edit Grumble</button>
+    <div class="comments">Comments</div>
     <form class="commentForm">
       <label>Author Name:</label>
       <input type="text" name="authorName">
       <label>Content:</label>
       <input type="text" name="content">
-      <button>Submit</button>
+      <button class="createComment">Submit</button>
     </form>
   </script>
 
@@ -52,6 +55,11 @@
       <button class="submit">Submit</button>
       <button class="cancel">Cancel</button>
     </form>
+  </script>
+
+  <script id="commentTemplate" type="text/x-handlebars-template">
+    <h4>{{ authorName }}</h4>
+    <p>{{ content }}</p>
   </script>
 
 </body>
